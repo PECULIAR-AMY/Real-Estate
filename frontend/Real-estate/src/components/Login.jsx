@@ -1,14 +1,27 @@
 import React, { useState } from 'react';
 import { TextField, Button, Typography, Paper, Box } from '@mui/material';
+import { useNavigate } from 'react-router-dom'; // <-- Import navigate
+import axios from 'axios';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate(); // <-- Initialize navigate
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     console.log('Login info:', { email, password });
-    // Add authentication logic here
+
+    axios.post("/api/login", { email, password })
+      .then((res) => {
+        console.log(res.data);
+        navigate('/home'); 
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("Login failed. Please try again.");
+      });
   };
 
   return (

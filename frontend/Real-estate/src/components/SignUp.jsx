@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from "axios";
 import {
   Box,
   TextField,
@@ -7,8 +8,11 @@ import {
   Paper,
   Link
 } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
+  const navigate = useNavigate(); 
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -25,12 +29,21 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (formData.password !== formData.confirmPassword) {
       alert('Passwords do not match');
       return;
     }
-    console.log('Signup info:', formData);
-    // Add signup logic here
+
+    axios.post("/add-auth_users", formData)
+      .then((res) => {
+        console.log(res.data);
+        navigate('/Home'); 
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("Signup failed. Please try again.");
+      });
   };
 
   return (
