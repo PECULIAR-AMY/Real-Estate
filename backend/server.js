@@ -47,7 +47,7 @@ app.post("/add_auth_users", (req, res) => {
   });
 });
 
-// Route to get properties from the DB
+// Route to get properties from the Database 
 app.get('/api/properties', (req, res) => {
   db.query('SELECT * FROM properties', (err, results) => {
     if (err) {
