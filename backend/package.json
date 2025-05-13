@@ -1,23 +1,27 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "type": "module",
+  "main": "server.js",
+  "type": "commonjs",
   "scripts": {
-    "dev": "vite",
+    "dev": "nodemon server.js",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "jest"
+    "test": "jest",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^5.1.0",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "mysql2": "^3.14.1",
+    "nodemon": "^3.1.10"
   },
   "devDependencies": {
     "vite": "^6.3.5"
-  }
+  },
+  "keywords": [],
+  "description": ""
 }
