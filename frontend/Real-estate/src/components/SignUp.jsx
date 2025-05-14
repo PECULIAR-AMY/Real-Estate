@@ -11,7 +11,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     name: '',
@@ -35,13 +35,13 @@ const Signup = () => {
       return;
     }
 
-    axios.post("/add-auth_users", formData)
+    axios.post("http://localhost:5000/add-auth_users", formData)
       .then((res) => {
         console.log(res.data);
         navigate('/Home'); 
       })
       .catch((err) => {
-        console.log(err);
+        console.error(err);
         alert("Signup failed. Please try again.");
       });
   };
